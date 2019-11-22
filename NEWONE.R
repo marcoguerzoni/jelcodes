@@ -28,7 +28,7 @@ library(tesseract)
 library(textclean)
 
 #install.packages("tesseract", dependencies = TRUE)
-
+#try it
 #prova <- ocr("M19.pdf")
 #change working directory
 #setwd("C:/Users/despina/Google Drive/ricerca/myprojects/jelcodes")
