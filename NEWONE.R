@@ -12,7 +12,7 @@ install.packages("tidytext")
 install.packages("purrr")
 install.packages("udpipe")
 
-setwd("C:/Users/despina/Google Drive/ricerca/Jel codes/analysis")
+setwd("C:/Users/despina/Google Drive/ricerca/myprojects/jelcodes")
 
 library(pdftools)
 library(purrr)
@@ -50,11 +50,27 @@ a <- list.files(pattern = "pdf$")
 # nchar(txt[2])
 
 #txt <- lapply(a, ocr)
-txt <- lapply(a[100:300], pdf_text)
+text <- lapply(a, pdf_text)
 #Sys.time()
 #save.image()
 txt <- lapply(txt, gsub, patter="[\r\n]", replacement=" ")
 
+ocr<-c("A10.pdf","A10.pdf", "A29.pdf", "D40.pdf", "F95.pdf", "g19.pdf", "g53.pdf", "J85.pdf", "L105.pdf", "M4.pdf", "038.pdf", "P28.pdf", "P72.pdf", "P73.pdf", "P89.pdf", "P93.pdf", "q67.pdf", "q87.pdf", "r30.pdf")
+
+i<-3
+
+ocrnumber<- which(a %in% ocr)
+
+text <- character(length = length(a))
+for (i in 1:5){
+  
+  if (i %in% ocrnumber == FALSE) {
+
+    text[i]<-pdf_text(file_list[i])
+    } else {
+    text[i]<- ocr[file_list[i]]
+    }
+  }
 
 
 prova <-pdf_text("g20.pdf")
